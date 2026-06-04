@@ -52,35 +52,31 @@ export const footerLinks: FooterLinkConfig[] = [
 export const footerContacts: Record<FooterVariant, FooterContactConfig> = {
   landing: {
     title: "Контакти",
-    description:
-      "Оберіть напрям звернення, щоб швидко зв’язатися з відповідальною групою.",
+    description: "Оберіть напрям звернення, щоб швидко зв’язатися з відповідальною групою.",
     groups: [
       {
         title: "Підключення",
-        description:
-          "Питання щодо підключення користувачів, доступу до платформи та первинної реєстрації.",
-        emails: ["y.melnyk@mil.ua"],
-        phones: ["+380 96 122 37 23"],
+        description: "Питання щодо підключення користувачів, доступу до платформи та первинної реєстрації.",
+        emails: ["user-support@mil.ua"],
+        phones: ["+380 00 000 00 00"],
       },
       {
         title: "Робота сайту",
-        description:
-          "Помилки інтерфейсу, некоректне відображення сторінок або проблеми з навігацією.",
-        emails: ["site-support@example.com"],
+        description: "Помилки інтерфейсу, некоректне відображення сторінок або проблеми з навігацією.",
+        emails: ["site-support@mil.ua"],
         phones: ["+380 00 000 00 02"],
       },
       {
         title: "Робота сервісів",
         description:
           "Проблеми з картографічними сервісами, шарами, застосунками або доступом до ресурсів ArcGIS Enterprise.",
-        emails: ["services-support@example.com"],
+        emails: ["services-support@mil.ua"],
         phones: ["+380 00 000 00 03"],
       },
       {
         title: "Співпраця",
-        description:
-          "Пропозиції щодо обміну даними, інтеграції, розвитку підсистем або міжвідомчої взаємодії.",
-        emails: ["cooperation@example.com"],
+        description: "Пропозиції щодо обміну даними, інтеграції, розвитку підсистем або міжвідомчої взаємодії.",
+        emails: ["cooperation@mil.ua"],
         phones: ["+380 00 000 00 04"],
       },
     ],
@@ -88,35 +84,31 @@ export const footerContacts: Record<FooterVariant, FooterContactConfig> = {
 
   platform: {
     title: "Контакти підтримки",
-    description:
-      "Оберіть напрям звернення відповідно до типу питання або проблеми.",
+    description: "Оберіть напрям звернення відповідно до типу питання або проблеми.",
     groups: [
       {
         title: "Підключення",
-        description:
-          "Доступ користувачів, облікові записи, права та первинне підключення до платформи.",
-        emails: ["y.melnyk@mil.ua"],
-        phones: ["+380 96 122 37 23"],
+        description: "Доступ користувачів, облікові записи, права та первинне підключення до платформи.",
+        emails: ["user-support"],
+        phones: ["+380 00 000 00 00"],
       },
       {
         title: "Робота сайту",
         description:
           "Некоректна робота сторінок, помилки інтерфейсу, проблеми з переходами або відображенням контенту.",
-        emails: ["platform@example.com"],
+        emails: ["platform@mil.ua"],
         phones: ["+380 00 000 00 01"],
       },
       {
         title: "Робота сервісів",
-        description:
-          "Проблеми з веб-картами, шарами, сервісами, застосунками або матеріалами ArcGIS Enterprise.",
-        emails: ["services-support@example.com"],
+        description: "Проблеми з веб-картами, шарами, сервісами, застосунками або матеріалами ArcGIS Enterprise.",
+        emails: ["services-support@mil.ua"],
         phones: ["+380 00 000 00 03"],
       },
       {
         title: "Співпраця",
-        description:
-          "Питання щодо взаємодії, розвитку геоінформаційних сервісів та інтеграції даних.",
-        emails: ["cooperation@example.com"],
+        description: "Питання щодо взаємодії, розвитку геоінформаційних сервісів та інтеграції даних.",
+        emails: ["cooperation@mil.ua"],
         phones: ["+380 00 000 00 04"],
       },
     ],

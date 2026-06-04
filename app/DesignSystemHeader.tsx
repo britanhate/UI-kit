@@ -25,7 +25,9 @@ function ProfileModal({ onClose }: { onClose: () => void }) {
       <DialogHeader className={styles.modalHeader}>
         <div>
           <p className={styles.eyebrow}>Обліковий запис</p>
-          <h2 id={titleId} className={styles.title}>Bohdan Pishcholin</h2>
+          <h2 id={titleId} className={styles.title}>
+            User Name
+          </h2>
           <p id={descriptionId} className={styles.description}>
             Демонстраційний authenticated-state для living design system. Візуально повторює верхню панель порталу.
           </p>
@@ -67,8 +69,8 @@ function HeaderProfileAction() {
         title="Профіль користувача"
       >
         <span className={actionStyles.userGroup}>
-          <span className={actionStyles.userName} title="Bohdan Pishcholin">
-            Bohdan Pishcholin
+          <span className={actionStyles.userName} title="User Name">
+            User Name
           </span>
 
           <span className={actionStyles.logoutIconWrap} aria-hidden="true">

@@ -1,0 +1,203 @@
+.root {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  width: 100%;
+  min-width: 0;
+  height: var(--header-height, var(--space-13));
+  min-height: var(--header-height, var(--space-13));
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0 var(--space-5);
+  border: 0;
+  border-left: var(--border-width) solid var(--header-action-border, rgba(222, 232, 255, 0.26));
+  background: transparent;
+
+  color: inherit;
+  cursor: default;
+  text-decoration: none;
+
+  font-family: var(--font-heading);
+  font-size: 0.98rem;
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--leading-none);
+  letter-spacing: var(--tracking-button);
+
+  transition:
+    color 280ms ease,
+    border-color 280ms ease,
+    transform var(--duration-base) ease;
+}
+
+.root::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+
+  background: var(--header-action-swipe, var(--color-overlay-muted));
+
+  transform: translateX(100%);
+  transition: transform 420ms ease;
+}
+
+.root:hover::before,
+.root:focus-visible::before,
+.root:focus-within::before {
+  transform: translateX(0);
+}
+
+.root:hover,
+.root:focus-visible,
+.root:focus-within {
+  color: var(--header-action-hover-color, var(--color-soft-white));
+  outline: none;
+}
+
+.interactiveRoot {
+  cursor: pointer;
+}
+
+.loadingRoot {
+  pointer-events: none;
+}
+
+.authenticatedRoot {
+  cursor: default;
+}
+
+.logoutRoot {
+  cursor: pointer;
+}
+
+.logoutRoot:disabled {
+  cursor: default;
+  opacity: 0.72;
+}
+
+.logoutRoot:focus-visible {
+  outline: var(--border-width) solid currentColor;
+  outline-offset: -4px;
+}
+
+.actionText,
+.userGroup,
+.loadingPlaceholder {
+  position: relative;
+  z-index: 1;
+}
+
+.userGroup {
+  width: 100%;
+  max-width: 320px;
+  min-width: 0;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+}
+
+.userName {
+  min-width: 0;
+  max-width: 190px;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.logoutIconWrap {
+  width: var(--space-8);
+  height: var(--space-8);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  flex: 0 0 32px;
+
+  color: inherit;
+
+  transition: opacity 180ms ease;
+}
+
+.logoutRoot:hover .logoutIconWrap,
+.logoutRoot:focus-visible .logoutIconWrap {
+  opacity: 0.86;
+}
+
+.logoutIcon {
+  width: var(--space-5);
+  height: var(--space-5);
+
+  display: block;
+
+  fill: currentColor;
+  pointer-events: none;
+}
+
+.loadingPlaceholder {
+  width: min(170px, 72%);
+  height: 1em;
+
+  display: block;
+
+  background: currentColor;
+  opacity: 0.18;
+
+  animation: shimmer 1.8s infinite;
+}
+
+@media (max-width: 900px) {
+  .root {
+    padding: 0 var(--space-4);
+  }
+
+  .userGroup {
+    gap: 10px;
+  }
+
+  .userName {
+    max-width: 92px;
+  }
+}
+
+@media (max-width: 560px) {
+  .root {
+    height: var(--space-12);
+    min-height: var(--space-12);
+    padding: var(--button-padding-sm);
+    font-size: var(--text-sm);
+  }
+
+  .userName {
+    display: none;
+  }
+
+  .userGroup {
+    justify-content: center;
+  }
+
+  .logoutIconWrap {
+    width: var(--space-8);
+    height: var(--space-8);
+    flex-basis: 32px;
+  }
+
+  .loadingPlaceholder {
+    width: 54px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .root,
+  .root::before,
+  .logoutIconWrap {
+    transition: none;
+  }
+}

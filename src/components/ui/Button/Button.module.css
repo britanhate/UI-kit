@@ -1,0 +1,101 @@
+.root {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border: var(--border-width) solid transparent;
+
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+
+  font-family: var(--font-heading);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--leading-none);
+  letter-spacing: var(--tracking-button);
+
+  transition:
+    background-color var(--duration-base) var(--ease-standard),
+    border-color var(--duration-base) var(--ease-standard),
+    color var(--duration-base) var(--ease-standard),
+    transform var(--duration-fast) var(--ease-spring);
+}
+
+.root:disabled,
+.root[aria-disabled="true"] {
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.root:focus-visible {
+  outline: var(--border-width) solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+.root:active {
+  transform: translateY(1px);
+}
+
+/* sizes */
+
+.sm {
+  min-height: var(--button-height-sm);
+  padding: var(--button-padding-sm);
+  font-size: var(--text-caption);
+}
+
+.md {
+  min-height: var(--button-height-md);
+  padding: var(--button-padding-md);
+  font-size: var(--text-sm);
+}
+
+/* variants */
+
+.primary {
+  background: rgba(1, 1, 2, 0.3);
+  border-color: var(--color-accent);
+  color: var(--color-text);
+}
+
+.primary:hover,
+.primary:focus-visible {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-text);
+}
+
+.secondary {
+  background: var(--color-alpha-soft);
+  border-color: rgba(245, 248, 255, 0.34);
+  color: var(--color-text);
+}
+
+.secondary:hover,
+.secondary:focus-visible {
+  background: var(--color-border-muted);
+  border-color: rgba(245, 248, 255, 0.58);
+  color: var(--color-text);
+}
+
+.ghost {
+  background: transparent;
+  border-color: transparent;
+  color: inherit;
+}
+
+.ghost:hover,
+.ghost:focus-visible {
+  background: var(--color-border-muted);
+  color: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .root {
+    transition: none;
+  }
+
+  .root:active {
+    transform: none;
+  }
+}

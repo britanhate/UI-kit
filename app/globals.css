@@ -1,0 +1,192 @@
+:root {
+  /* Core palette */
+  --color-bg: rgb(1, 1, 2);
+
+  --color-white: #ffffff;
+  --color-soft-white: #f5f8ff;
+  --color-ink: #122238;
+  --color-neutral-900: #121212;
+
+  --color-text: var(--color-white);
+  --color-text-muted: #cccccc;
+  --color-text-faint: rgba(245, 248, 255, 0.52);
+
+  --color-accent: #f39200;
+  --color-accent-soft: rgba(243, 146, 0, 0.12);
+  --color-accent-border: rgba(243, 146, 0, 0.72);
+
+  --color-border: #272727;
+  --color-border-soft: rgba(245, 248, 255, 0.14);
+  --color-border-muted: rgba(245, 248, 255, 0.08);
+
+  --color-alpha-soft: rgba(1, 1, 2, 0.16);
+
+  --color-light-bg-soft: var(--color-soft-white);
+  --color-light-text-muted: rgba(18, 34, 56, 0.68);
+
+  --color-overlay: rgba(1, 1, 2, 0.68);
+  --color-overlay-muted: rgba(1, 1, 2, 0.58);
+
+  /* Backward-compatible aliases */
+
+  /* Fonts */
+  --font-standart-fallback: Arial, Helvetica, sans-serif;
+  --font-standard-fallback: var(--font-standart-fallback);
+  --font-uaf-fallback: Arial, Helvetica, sans-serif;
+
+  --font-standard: var(--font-standart);
+  --font-body: var(--font-standard), var(--font-standard-fallback);
+  --font-heading: var(--font-uaf), var(--font-uaf-fallback);
+
+  /* Layout */
+
+  --container-xs: 520px;
+  --container-sm: 560px;
+  --container-md: 720px;
+  --container-lg: 860px;
+  --container-xl: 1120px;
+  --container-max: 1520px;
+  --container-padding: clamp(1rem, 6vw, 7.25rem);
+
+  /* Spacing scale */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 28px;
+  --space-8: 32px;
+  --space-9: 40px;
+  --space-10: 48px;
+  --space-11: 56px;
+  --space-12: 64px;
+  --space-13: 72px;
+  --space-14: 96px;
+
+  /* Section rhythm */
+  --section-padding-y: clamp(4.5rem, 5vw + 2rem, 8rem);
+  --section-padding-y-compact: clamp(3.5rem, 12vw, 5rem);
+  --section-padding-y-end: clamp(4rem, 5vw + 2rem, 7rem);
+  --section-header-gap: clamp(36px, 4vw, 64px);
+
+  /* Typography */
+  --text-eyebrow: 0.74rem;
+  --text-caption: 0.82rem;
+  --text-sm: 0.875rem;
+  --text-md: 0.95rem;
+  --text-lg: 1.05rem;
+
+  --text-fluid-sm: clamp(0.875rem, 0.188vw + 0.831rem, 1rem);
+  --text-title-section: clamp(1.625rem, 2.44vw + 1.05rem, 3.25rem);
+  --text-title-card: clamp(1.2rem, 1.25vw, 1.6rem);
+  --text-title-hero: clamp(1rem, 2.1vw, 3rem);
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+
+  --leading-none: 1;
+  --leading-tight: 1.1;
+  --leading-snug: 1.2;
+  --leading-body: 1.55;
+  --leading-relaxed: 1.6;
+
+  --tracking-eyebrow: 0.16em;
+  --tracking-button: 0.02em;
+  --tracking-tight-title: clamp(-0.0325rem, -0.024vw - 0.0105rem, -0.01625rem);
+
+  /* Shape: project uses square geometry only */
+
+  /* Component tokens */
+  --header-height: 72px;
+
+  --border-width: 1px;
+  --border-width-strong: 2px;
+
+  --button-height-sm: 36px;
+  --button-height-md: 44px;
+  --button-padding-sm: 0 14px;
+  --button-padding-md: 0 18px;
+
+  --card-bg: rgba(245, 248, 255, 0.035);
+  --card-bg-hover: rgba(245, 248, 255, 0.055);
+  --card-border: var(--color-border);
+
+
+  /* Motion */
+  --ease-standard: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  --duration-fast: 160ms;
+  --duration-base: 240ms;
+  --duration-medium: 320ms;
+  --duration-slow: 520ms;
+  --duration-page: 700ms;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  scroll-behavior: smooth;
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+body {
+  min-height: 100%;
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+}
+
+a,
+p {
+  color: var(--color-text-muted);
+  text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: clip;
+}
+
+main {
+  animation: fadeInUp var(--duration-page) var(--ease-standard) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  main {
+    animation: none;
+  }
+}

@@ -1,0 +1,167 @@
+.backButton {
+  --platform-back-accent: var(--color-accent);
+  --platform-back-bg: var(--color-bg);
+  --platform-back-border: var(--color-white);
+  --platform-back-base-bottom: clamp(1rem, 2.5vw, 1.75rem);
+  --platform-back-footer-offset: 0px;
+
+  position: fixed;
+  right: clamp(1rem, 2.5vw, 1.75rem);
+  bottom: calc(
+    var(--platform-back-base-bottom) + var(--platform-back-footer-offset)
+  );
+  z-index: 999;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 3rem;
+  height: 3rem;
+  padding: 0;
+
+  border: var(--border-width) solid var(--platform-back-border);
+
+  color: var(--color-white);
+  background: var(--platform-back-bg);
+  text-decoration: none;
+
+  appearance: none;
+  -webkit-tap-highlight-color: transparent;
+
+  transition:
+    border-color 180ms ease,
+    color 180ms ease,
+    background 120ms ease,
+    bottom 180ms ease,
+    transform 180ms ease;
+}
+
+:global(body[data-dialog-open="true"]) .backButton {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.backButton:hover {
+  border-color: var(--platform-back-accent);
+  color: var(--platform-back-accent);
+  background: var(--platform-back-bg);
+}
+
+.backButton:active {
+  border-color: var(--platform-back-accent);
+  color: var(--color-white);
+  background: var(--platform-back-accent);
+
+  transform: translateY(1px);
+}
+
+.backButton:focus-visible {
+  outline: var(--border-width-strong) solid var(--platform-back-accent);
+  outline-offset: 4px;
+}
+
+.tooltip {
+  position: absolute;
+  right: calc(100% + 0.75rem);
+  top: 50%;
+
+  display: inline-flex;
+  align-items: center;
+
+  min-height: 2rem;
+  padding: 0.45rem 0.65rem;
+
+  border: var(--border-width) solid var(--platform-back-border);
+
+  color: var(--color-white);
+  background: var(--platform-back-bg);
+
+  font-family: var(--font-standart), system-ui, sans-serif;
+  font-size: 0.72rem;
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--leading-none);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transform: translateY(-50%) translateX(0.25rem);
+
+  transition:
+    opacity 160ms ease,
+    visibility 160ms ease,
+    transform 160ms ease,
+    border-color 180ms ease,
+    color 180ms ease;
+}
+
+.backButton:hover .tooltip,
+.backButton:focus-visible .tooltip {
+  border-color: var(--platform-back-accent);
+  color: var(--platform-back-accent);
+
+  opacity: 1;
+  visibility: visible;
+
+  transform: translateY(-50%) translateX(0);
+}
+
+.icon {
+  width: 1.125rem;
+  height: 1.125rem;
+
+  transition: transform 180ms ease;
+}
+
+.backButton:hover .icon {
+  transform: translateX(-0.125rem);
+}
+
+.backButton:active .icon {
+  transform: translateX(0);
+}
+
+@media (max-width: 640px) {
+  .backButton {
+    --platform-back-base-bottom: 1rem;
+
+    right: 1rem;
+
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+
+  .icon {
+    width: 1rem;
+    height: 1rem;
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .tooltip {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .backButton,
+  .tooltip,
+  .icon {
+    transition: none;
+  }
+
+  .backButton:hover .icon,
+  .backButton:active .icon {
+    transform: none;
+  }
+
+  .backButton:hover .tooltip,
+  .backButton:focus-visible .tooltip {
+    transform: translateY(-50%);
+  }
+}

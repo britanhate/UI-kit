@@ -1,0 +1,1 @@
+export { GeoportalNigdNote } from "./GeoportalNigdNote";

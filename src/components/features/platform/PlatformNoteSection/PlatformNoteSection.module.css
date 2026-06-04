@@ -1,0 +1,42 @@
+.section {
+  position: relative;
+  overflow: hidden;
+
+  padding: clamp(3.5rem, 4vw + 2rem, 6rem) 6vw var(--section-padding-y-end);
+
+  background-color: var(--color-bg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  color: var(--color-text);
+
+  border-top: var(--border-width) solid var(--color-border);
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+
+  max-width: var(--container-lg);
+}
+
+.metricsLink {
+  display: inline-flex;
+  margin-top: 22px;
+
+  color: var(--color-text);
+  font-family: var(--font-standart), system-ui, sans-serif;
+  font-size: 0.92rem;
+  text-decoration: none;
+}
+
+.metricsLink:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 640px) {
+  .section {
+    padding-inline: var(--space-6);
+  }
+}

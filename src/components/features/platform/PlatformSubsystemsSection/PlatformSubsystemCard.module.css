@@ -1,0 +1,339 @@
+.card {
+  --platform-card-overlay:
+    linear-gradient(
+      180deg,
+      transparent 0%,
+      rgba(1, 1, 2, 0.08) 42%,
+      rgba(1, 1, 2, 0.24) 78%,
+      rgba(1, 1, 2, 0.42) 100%
+    ),
+    linear-gradient(
+      90deg,
+      rgba(1, 1, 2, 0.1) 0%,
+      transparent 50%,
+      rgba(1, 1, 2, 0.08) 100%
+    );
+
+  --platform-card-overlay-hover:
+    linear-gradient(
+      180deg,
+      transparent 0%,
+      rgba(1, 1, 2, 0.1) 42%,
+      rgba(1, 1, 2, 0.28) 78%,
+      rgba(1, 1, 2, 0.48) 100%
+    ),
+    linear-gradient(
+      90deg,
+      rgba(1, 1, 2, 0.1) 0%,
+      transparent 50%,
+      rgba(1, 1, 2, 0.08) 100%
+    );
+
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  height: clamp(480px, 38.5vw, 650px);
+  min-height: 480px;
+
+  display: flex;
+  align-items: flex-end;
+
+  background-color: var(--color-bg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  border: var(--border-width) solid var(--color-border);
+  color: var(--color-text);
+
+  transition:
+    border-color var(--duration-medium) ease,
+    transform var(--duration-medium) ease;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+
+  background: inherit;
+  background-size: cover;
+  background-position: center;
+
+  transform: scale(1.01);
+  filter: saturate(0.98) contrast(1.02) brightness(0.98);
+
+  transition:
+    transform 760ms var(--ease-out-soft),
+    filter 760ms var(--ease-out-soft);
+}
+
+.card:hover,
+.card:focus-within {
+  border-color: var(--color-accent);
+}
+
+.card:hover::before,
+.card:focus-within::before {
+  transform: scale(1.035);
+  filter: saturate(1.04) contrast(1.04) brightness(1);
+}
+
+.cardLink {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+
+  cursor: pointer;
+}
+
+.card:has(.cardLink:focus-visible) {
+  border-color: var(--color-accent);
+}
+
+.card:has(.cardLink:focus-visible)::before {
+  transform: scale(1.035);
+  filter: saturate(1.04) contrast(1.04) brightness(1);
+}
+
+.card:has(.cardLink:focus-visible) .overlay {
+  background: var(--platform-card-overlay-hover);
+}
+
+.card:has(.cardLink:focus-visible) .content {
+  transform: translateY(-6px);
+}
+
+.cardLink:focus-visible {
+  outline: var(--border-width) solid var(--color-accent);
+  outline-offset: -6px;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+
+  background: var(--platform-card-overlay);
+
+  transition: background var(--duration-slow) ease;
+}
+
+.card:hover .overlay,
+.card:focus-within .overlay {
+  background: var(--platform-card-overlay-hover);
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+
+  width: min(100%, var(--container-lg));
+  padding: clamp(var(--space-7), 4vw, var(--space-11));
+
+  display: grid;
+  justify-items: start;
+  gap: var(--space-4);
+
+  transform: translateY(0);
+
+  transition: transform var(--duration-slow) var(--ease-out-soft);
+}
+
+.card:hover .content,
+.card:focus-within .content {
+  transform: translateY(-6px);
+}
+
+.label {
+  margin: 0;
+
+  color: var(--color-text-muted);
+  font-family: var(--font-standart), system-ui, sans-serif;
+  font-size: 0.72rem;
+  font-weight: var(--font-weight-medium);
+  line-height: var(--leading-none);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+}
+
+.title {
+  margin: 0;
+
+  color: var(--color-text);
+  font-family: var(--font-heading);
+  font-size: clamp(1.8rem, 2.6vw, 3.2rem);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+.description {
+  max-width: var(--container-sm);
+  margin: 0;
+
+  color: var(--color-text-muted);
+  font-family: var(--font-standart), system-ui, sans-serif;
+  font-size: clamp(0.92rem, 0.35vw + 0.84rem, var(--text-lg));
+  font-weight: var(--font-weight-medium);
+  line-height: var(--leading-body);
+}
+
+.tags {
+  max-width: var(--container-lg);
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+
+  min-height: var(--space-7);
+  padding: 5px 10px;
+
+  border: var(--border-width) solid var(--color-border);
+  background: rgba(1, 1, 2, 0.32);
+
+  color: var(--color-text-muted);
+  font-family: var(--font-standart), system-ui, sans-serif;
+  font-size: 0.86rem;
+  line-height: var(--leading-none);
+}
+
+.label,
+.title,
+.description,
+.tags {
+  pointer-events: none;
+}
+
+.actions {
+  position: relative;
+  z-index: 3;
+
+  margin-top: 10px;
+
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+
+  pointer-events: auto;
+}
+
+.actions :global(a),
+.actions :global(button) {
+  position: relative;
+  z-index: 4;
+
+  pointer-events: auto;
+}
+
+@media (max-width: 980px) {
+  .card {
+    height: clamp(460px, 58vw, var(--container-sm));
+    min-height: 460px;
+  }
+
+  .content {
+    width: min(100%, 620px);
+  }
+
+  .title {
+    font-size: clamp(1.65rem, 5vw, 2.6rem);
+  }
+}
+
+@media (max-width: 760px) {
+  .card {
+    height: clamp(460px, 90vw, var(--container-sm));
+    min-height: 460px;
+  }
+
+  .overlay {
+    background: linear-gradient(
+      180deg,
+      rgba(1, 1, 2, 0.08) 0%,
+      var(--color-alpha-soft) 36%,
+      rgba(1, 1, 2, 0.34) 74%,
+      var(--color-overlay-muted) 100%
+    );
+  }
+
+  .card:hover .overlay,
+  .card:focus-within .overlay {
+    background: linear-gradient(
+      180deg,
+      rgba(1, 1, 2, 0.1) 0%,
+      rgba(1, 1, 2, 0.2) 36%,
+      rgba(1, 1, 2, 0.38) 74%,
+      rgba(1, 1, 2, 0.64) 100%
+    );
+  }
+
+  .content {
+    width: auto;
+    padding: var(--space-7) var(--space-6);
+    gap: 14px;
+  }
+
+  .title {
+    font-size: clamp(1.55rem, 8vw, 2.3rem);
+  }
+
+  .description {
+    font-size: 0.94rem;
+  }
+
+  .tags {
+    gap: 7px;
+  }
+
+  .tag {
+    min-height: 26px;
+    padding: 5px 9px;
+    font-size: 0.72rem;
+  }
+
+  .actions {
+    width: 100%;
+    align-items: stretch;
+  }
+
+  .actions :global(a),
+  .actions :global(button) {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    height: 500px;
+    min-height: 500px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .card::before,
+  .overlay,
+  .content {
+    transition: none;
+  }
+
+  .card:hover::before,
+  .card:focus-within::before {
+    transform: scale(1.01);
+  }
+
+  .card:hover .content,
+  .card:focus-within .content {
+    transform: none;
+  }
+}

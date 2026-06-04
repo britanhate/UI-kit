@@ -1,0 +1,1 @@
+export { SubsystemHero } from "./SubsystemHero";

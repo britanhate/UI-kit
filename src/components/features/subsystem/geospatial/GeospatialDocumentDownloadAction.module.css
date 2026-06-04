@@ -1,0 +1,30 @@
+.root {
+  display: grid;
+  justify-items: start;
+  gap: 10px;
+}
+
+.actionRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.error {
+  max-width: 280px;
+  margin: 0;
+
+  color: #f7b267;
+  font-family: var(--font-standart), system-ui, sans-serif;
+  font-size: var(--text-caption);
+  line-height: 1.35;
+}
+
+.error span {
+  display: block;
+}
+
+.fallbackLink {
+  border-color: var(--color-accent-border);
+}

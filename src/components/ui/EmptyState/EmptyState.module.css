@@ -1,0 +1,45 @@
+.emptyState {
+  max-width: var(--container-md);
+  padding: clamp(var(--space-6), 3vw, var(--space-9));
+
+  border: var(--border-width) solid var(--empty-state-border);
+  background: var(--empty-state-bg);
+  color: var(--empty-state-text);
+}
+
+.dark {
+  --empty-state-bg: var(--card-bg);
+  --empty-state-border: var(--card-border);
+  --empty-state-title: var(--color-text);
+  --empty-state-text: var(--color-text-muted);
+}
+
+.light {
+  --empty-state-bg: #f7faff;
+  --empty-state-border: var(--color-alpha-soft);
+  --empty-state-title: var(--color-ink);
+  --empty-state-text: var(--color-light-text-muted);
+}
+
+.compact {
+  padding: var(--space-5) var(--space-6);
+}
+
+.title {
+  margin: 0;
+
+  color: var(--empty-state-title);
+  font-family: var(--font-heading);
+  font-size: clamp(1.15rem, 1.2vw, 1.5rem);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--leading-snug);
+}
+
+.description {
+  margin: var(--space-3) 0 0;
+
+  color: var(--empty-state-text);
+  font-family: var(--font-body);
+  font-size: var(--text-md);
+  line-height: var(--leading-body);
+}

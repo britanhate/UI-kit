@@ -61,7 +61,7 @@ const uafFont = localFont({
 export const metadata: Metadata = {
   title: "Living Design System | ІКС ГІС МОУ",
   description:
-    "Кодова дизайн-система GIS Portal без Figma: реальні компоненти, правила використання та адаптивні стани.",
+    "Кодова дизайн-система GIS Portal: реальні компоненти, правила використання та адаптивні стани.",
 };
 
 export default function RootLayout({

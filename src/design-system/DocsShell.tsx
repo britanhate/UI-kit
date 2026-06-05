@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
 import { designSystemNav } from "./navigation";
+import { ExpandableCodeBlock } from "./ExpandableCodeBlock";
 import styles from "./DocsShell.module.css";
 
 export function DocsShell({
@@ -100,11 +101,7 @@ export function Preview({
 }
 
 export function CodeBlock({ children }: Readonly<{ children: string }>) {
-  return (
-    <pre className={styles.code}>
-      <code>{children.trim()}</code>
-    </pre>
-  );
+  return <ExpandableCodeBlock>{children}</ExpandableCodeBlock>;
 }
 
 export function CodeExample({ tsx, css }: Readonly<{ tsx: string; css: string }>) {

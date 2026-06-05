@@ -25,15 +25,10 @@ export default function ButtonsPage() {
           </div>
         </DocsSection>
 
-        <DocsSection title="Як зробити кодом" description="Компонент може рендерити або button, або link. Візуальний клас лишається спільним, щоб дія виглядала однаково.">
+        <DocsSection title="Реалізація компонента" description="Компонент може рендерити або button, або link. Візуальний клас лишається спільним, щоб дія виглядала однаково.">
           <CodeExample
-            tsxPath="src/design-system/examples/ButtonDemo.tsx"
-            cssPath={[
-              "src/design-system/examples/ButtonDemo.module.css",
-              "src/components/ui/Button/Button.module.css",
-              "src/components/ui/AccentButton/AccentButton.module.css",
-              "src/components/ui/Badge/Badge.module.css",
-            ]}
+            tsxPath="src/design-system/examples/implementations/ButtonImplementation.tsx"
+            cssPath="src/design-system/examples/implementations/ButtonImplementation.module.css"
           />
         </DocsSection>
       </div>

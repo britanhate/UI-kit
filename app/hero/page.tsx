@@ -25,10 +25,10 @@ export default function HeroPage() {
           </Preview>
         </DocsSection>
 
-        <DocsSection title="Як зробити кодом" description="Приклад нижче показує мінімальну структуру. У production-компоненті можна замінити img на video/poster, але візуальна схема лишається такою самою.">
+        <DocsSection title="Реалізація компонента" description="Приклад нижче показує мінімальну структуру. У production-компоненті можна замінити img на video/poster, але візуальна схема лишається такою самою.">
           <CodeExample
-            tsxPath="src/design-system/examples/HeroDemo.tsx"
-            cssPath="src/components/features/shared/MainHero/MainHero.module.css"
+            tsxPath="src/design-system/examples/implementations/HeroImplementation.tsx"
+            cssPath="src/design-system/examples/implementations/HeroImplementation.module.css"
           />
         </DocsSection>
       </div>

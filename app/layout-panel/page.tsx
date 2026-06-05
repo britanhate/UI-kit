@@ -25,7 +25,7 @@ export default function LayoutPanelPage() {
           </Preview>
         </DocsSection>
 
-        <DocsSection title="Як зробити кодом">
+        <DocsSection title="Реалізація навігаційної панелі">
           <CodeExample
             tsxPath="src/design-system/examples/LayoutPanelDemo.tsx"
             cssPath="src/design-system/examples/LayoutPanelDemo.module.css"

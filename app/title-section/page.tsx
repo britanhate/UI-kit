@@ -25,10 +25,10 @@ export default function TitleSectionPage() {
           </Preview>
         </DocsSection>
 
-        <DocsSection title="Як зробити кодом">
+        <DocsSection title="Реалізація компонента">
           <CodeExample
-            tsxPath="src/design-system/examples/TitleSectionDemo.tsx"
-            cssPath="src/components/features/shared/TitleSection/TitleSection.module.css"
+            tsxPath="src/design-system/examples/implementations/TitleSectionImplementation.tsx"
+            cssPath="src/design-system/examples/implementations/TitleSectionImplementation.module.css"
           />
         </DocsSection>
       </div>

@@ -24,7 +24,7 @@ export default function FontsPage() {
           </div>
         </DocsSection>
 
-        <DocsSection title="Як зробити кодом" description="Шрифти підключаються один раз у root layout. Компоненти далі використовують тільки семантичні змінні: body або heading.">
+        <DocsSection title="Реалізація типографіки" description="Шрифти підключаються один раз у root layout. Компоненти далі використовують тільки семантичні змінні: body або heading.">
           <CodeExample
             tsxPath={[
               "src/design-system/examples/TypographyDemo.tsx",

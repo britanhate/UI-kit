@@ -25,7 +25,7 @@ export default function PaddingsPage() {
           </div>
         </DocsSection>
 
-        <DocsSection title="Як зробити кодом" description="Сторінковий відступ задається секцією. Компонент не повинен сам вигадувати ширину контейнера, якщо він живе всередині стандартної сторінки.">
+        <DocsSection title="Реалізація spacing scale" description="Сторінковий відступ задається секцією. Компонент не повинен сам вигадувати ширину контейнера, якщо він живе всередині стандартної сторінки.">
           <CodeExample
             tsxPath="src/design-system/examples/SpacingDemo.tsx"
             cssPath={[

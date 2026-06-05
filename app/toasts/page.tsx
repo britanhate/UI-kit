@@ -59,13 +59,10 @@ export default function ToastsPage() {
           </div>
         </DocsSection>
 
-        <DocsSection title="Як зробити кодом">
+        <DocsSection title="Реалізація компонента">
           <CodeExample
-            tsxPath="app/toasts/ToastDemo.tsx"
-            cssPath={[
-              "app/toasts/ToastDemo.module.css",
-              "src/components/ui/Toast/ToastProvider.module.css",
-            ]}
+            tsxPath="src/design-system/examples/implementations/ToastImplementation.tsx"
+            cssPath="src/design-system/examples/implementations/ToastImplementation.module.css"
           />
         </DocsSection>
       </div>

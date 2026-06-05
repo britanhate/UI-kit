@@ -25,13 +25,10 @@ export default function SubsystemSectionPage() {
           </Preview>
         </DocsSection>
 
-        <DocsSection title="Як зробити кодом">
+        <DocsSection title="Реалізація компонента">
           <CodeExample
-            tsxPath="src/design-system/examples/SubsystemSectionDemo.tsx"
-            cssPath={[
-              "src/components/features/platform/PlatformSubsystemsSection/PlatformSubsystemsSection.module.css",
-              "src/components/features/platform/PlatformSubsystemsSection/PlatformSubsystemCard.module.css",
-            ]}
+            tsxPath="src/design-system/examples/implementations/SubsystemSectionImplementation.tsx"
+            cssPath="src/design-system/examples/implementations/SubsystemSectionImplementation.module.css"
           />
         </DocsSection>
       </div>

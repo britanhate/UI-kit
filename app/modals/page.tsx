@@ -62,13 +62,10 @@ export default function ModalsPage() {
           </div>
         </DocsSection>
 
-        <DocsSection title="Як зробити кодом">
+        <DocsSection title="Реалізація компонента">
           <CodeExample
-            tsxPath="app/modals/ModalDemo.tsx"
-            cssPath={[
-              "app/modals/ModalDemo.module.css",
-              "src/components/ui/Dialog/Dialog.module.css",
-            ]}
+            tsxPath="src/design-system/examples/implementations/ModalImplementation.tsx"
+            cssPath="src/design-system/examples/implementations/ModalImplementation.module.css"
           />
         </DocsSection>
       </div>

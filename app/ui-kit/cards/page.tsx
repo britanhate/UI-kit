@@ -31,14 +31,10 @@ export default function CardsPage() {
           </div>
         </DocsSection>
 
-        <DocsSection title="Як зробити кодом">
+        <DocsSection title="Реалізація компонента">
           <CodeExample
-            tsxPath="src/design-system/examples/CardsDemo.tsx"
-            cssPath={[
-              "src/design-system/examples/CardsDemo.module.css",
-              "src/components/features/subsystem/geoportal/AppsSection/GeoportalAppCard.module.css",
-              "src/components/features/subsystem/geospatial/GeospatialDocumentsSection/GeospatialDocumentCard.module.css",
-            ]}
+            tsxPath="src/design-system/examples/implementations/CardImplementation.tsx"
+            cssPath="src/design-system/examples/implementations/CardImplementation.module.css"
           />
         </DocsSection>
       </div>

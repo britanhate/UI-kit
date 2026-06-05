@@ -2,9 +2,9 @@ import type { SanitizedArcgisItem } from "@/lib/arcgis/types";
 
 export const demoAppItem: SanitizedArcgisItem = {
   id: "demo-app",
-  title: "Приклад веб-застосунку",
+  title: "Приклад веб застосунку для найвідповідальнішого землевпорядкування",
   type: "Web Experience",
-  snippet: "Картка показує, як виглядає застосунок із зображенням, metadata, коротким описом і основною дією.",
+  snippet: "Картка показує, як виглядає застосунок із зображенням, metadata, коротким описом і основною дією, а також перевіряє довгі українські слова без горизонтального overflow.",
   created: Date.UTC(2026, 4, 25),
   modified: Date.UTC(2026, 4, 25),
   itemPageUrl: "#",

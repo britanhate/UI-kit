@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
 import { designSystemNav } from "./navigation";
+import { DocsMobileNavigation } from "./DocsMobileNavigation";
 import { ExpandableCodeBlock } from "./ExpandableCodeBlock";
 import { getSourceCode } from "./source/getSourceCode";
 import styles from "./DocsShell.module.css";
@@ -14,6 +15,7 @@ export function DocsShell({
 }>) {
   return (
     <main className={styles.shell}>
+      <DocsMobileNavigation currentHref={currentHref} />
       <div className={styles.layout}>
         <aside className={styles.sidebar} aria-label="Навігація дизайн-системи">
           <div className={styles.sidebarInner} data-lenis-prevent>

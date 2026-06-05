@@ -1,0 +1,172 @@
+.demoSurface {
+  min-height: 340px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--color-border-soft);
+  background: rgba(255, 255, 255, 0.035);
+  padding: var(--space-6);
+}
+
+.demoCard {
+  max-width: 560px;
+  border: 1px solid var(--color-border-soft);
+  background: rgba(1, 1, 2, 0.78);
+  padding: clamp(1.25rem, 3vw, 2rem);
+}
+
+.demoEyebrow {
+  margin: 0 0 var(--space-3);
+  color: var(--color-accent);
+  font-family: var(--font-heading);
+  font-size: var(--text-eyebrow);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+}
+
+.demoTitle {
+  margin: 0;
+  color: var(--color-soft-white);
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 2vw, 2.4rem);
+  line-height: var(--leading-tight);
+}
+
+.demoText {
+  margin: var(--space-4) 0 var(--space-6);
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+}
+
+.trigger {
+  min-height: 44px;
+  border: 1px solid var(--color-accent);
+  background: var(--color-accent);
+  padding: 0 18px;
+  color: #010102;
+  font-family: var(--font-heading);
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: var(--space-6);
+  background: rgba(1, 1, 2, 0.58);
+  backdrop-filter: blur(10px);
+}
+
+.modal {
+  width: min(780px, 100%);
+  max-height: min(860px, calc(100vh - var(--space-8)));
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-soft-white);
+  color: var(--color-ink);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-5);
+  padding: var(--space-6);
+  border-bottom: 1px solid rgba(18, 34, 56, 0.16);
+}
+
+.modalEyebrow {
+  margin: 0 0 var(--space-2);
+  color: rgba(18, 34, 56, 0.64);
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.modalTitle {
+  margin: 0;
+  color: var(--color-ink);
+  font-family: var(--font-heading);
+  font-size: clamp(1.25rem, 1.2vw + 1rem, 1.75rem);
+  line-height: 1.15;
+}
+
+.modalDescription {
+  max-width: 620px;
+  margin: var(--space-3) 0 0;
+  color: rgba(18, 34, 56, 0.74);
+  line-height: var(--leading-body);
+}
+
+.closeButton {
+  width: 42px;
+  height: 42px;
+  flex: 0 0 auto;
+  border: 1px solid rgba(18, 34, 56, 0.18);
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--color-ink);
+  cursor: pointer;
+  transition: transform var(--duration-fast) var(--ease-standard);
+}
+
+.closeButton:hover,
+.closeButton:focus-visible {
+  transform: scale(1.08) rotate(90deg);
+  outline: none;
+}
+
+.body {
+  overflow: auto;
+  padding: var(--space-7) var(--space-6) 30px;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.74), rgba(255, 255, 255, 0.74)),
+    url("/images/contact-modal.webp");
+  background-size: cover;
+  background-position: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+
+.infoCard {
+  padding: 18px;
+  border: 1px solid rgba(1, 1, 2, 0.16);
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: 0 8px 24px rgba(18, 34, 56, 0.08);
+}
+
+.infoCard h3,
+.infoCard p {
+  margin: 0;
+  color: var(--color-ink);
+}
+
+.infoCard p {
+  margin-top: var(--space-2);
+  color: rgba(18, 34, 56, 0.74);
+  line-height: var(--leading-body);
+}
+
+@media (max-width: 640px) {
+  .overlay {
+    align-items: end;
+    padding: 0;
+  }
+
+  .modal {
+    max-height: 100vh;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

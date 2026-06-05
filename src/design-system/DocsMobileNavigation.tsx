@@ -9,17 +9,17 @@ import { designSystemNav } from "./navigation";
 import styles from "./DocsShell.module.css";
 
 export function DocsMobileNavigation({ currentHref }: Readonly<{ currentHref: string }>) {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const titleId = useId();
 
-  useBodyScrollLock(isOpen);
+  useBodyScrollLock(isMenuOpen);
 
   useEffect(() => {
-    if (!isOpen) return;
+    if (!isMenuOpen) return;
 
     function handleKeyDown(event: KeyboardEvent) {
       if (event.key === "Escape") {
-        setIsOpen(false);
+        setIsMenuOpen(false);
       }
     }
 
@@ -28,10 +28,10 @@ export function DocsMobileNavigation({ currentHref }: Readonly<{ currentHref: st
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, [isOpen]);
+  }, [isMenuOpen]);
 
   function closeMenu() {
-    setIsOpen(false);
+    setIsMenuOpen(false);
   }
 
   return (
@@ -40,29 +40,28 @@ export function DocsMobileNavigation({ currentHref }: Readonly<{ currentHref: st
         <button
           className={styles.mobileNavButton}
           type="button"
-          aria-expanded={isOpen}
+          aria-expanded={isMenuOpen}
           aria-controls="design-system-mobile-navigation"
-          onClick={() => setIsOpen(true)}
+          onClick={() => setIsMenuOpen(true)}
         >
           ☰ Розділи
         </button>
       </div>
 
       <div
-        className={`${styles.mobileNavBackdrop} ${isOpen ? styles.mobileNavBackdropOpen : ""}`}
+        className={`${styles.mobileNavBackdrop} ${isMenuOpen ? styles.mobileNavBackdropOpen : ""}`}
         aria-hidden="true"
-        hidden={!isOpen}
         onClick={closeMenu}
       />
 
       <aside
         id="design-system-mobile-navigation"
-        className={`${styles.mobileNavPanel} ${isOpen ? styles.mobileNavPanelOpen : ""}`}
+        className={`${styles.mobileNavPanel} ${isMenuOpen ? styles.mobileNavPanelOpen : ""}`}
         aria-label="Навігація дизайн-системи"
         aria-labelledby={titleId}
+        aria-hidden={!isMenuOpen}
         aria-modal="true"
         role="dialog"
-        hidden={!isOpen}
         data-lenis-prevent
       >
         <div className={styles.mobileNavHeader}>

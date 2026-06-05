@@ -1,4 +1,6 @@
 .root {
+  --code-preview-height: clamp(17rem, 42vw, 25rem);
+
   min-width: 0;
 }
 
@@ -8,7 +10,7 @@
 }
 
 .code {
-  max-height: clamp(17rem, 42vw, 25rem);
+  max-height: var(--code-preview-height);
   overflow-x: auto;
   overflow-y: hidden;
   margin: 0;
@@ -19,6 +21,11 @@
   font-size: 0.88rem;
   line-height: 1.7;
   transition: max-height var(--duration-medium) var(--ease-standard);
+}
+
+.root[data-expanded="true"] .code {
+  max-height: none;
+  overflow-y: visible;
 }
 
 .code code {
@@ -65,13 +72,12 @@
   outline: none;
 }
 
-.root[data-expanded="true"] .code {
-  overflow-y: hidden;
-}
-
 @media (max-width: 820px) {
+  .root {
+    --code-preview-height: clamp(13.5rem, 58vw, 20rem);
+  }
+
   .code {
-    max-height: clamp(13.5rem, 58vw, 20rem);
     padding: var(--space-4);
   }
 

@@ -9,50 +9,51 @@ type ExpandableCodeBlockProps = Readonly<{
 
 export function ExpandableCodeBlock({ children }: ExpandableCodeBlockProps) {
   const code = children.trim();
+  const rootRef = useRef<HTMLDivElement>(null);
   const preRef = useRef<HTMLPreElement>(null);
   const [isExpanded, setIsExpanded] = useState(false);
   const [isExpandable, setIsExpandable] = useState(false);
-  const [expandedHeight, setExpandedHeight] = useState<number | null>(null);
 
   useEffect(() => {
+    const root = rootRef.current;
     const pre = preRef.current;
 
-    if (!pre) {
+    if (!root || !pre) {
       return;
     }
 
+    let frame = 0;
+
     const measure = () => {
-      const fullHeight = pre.scrollHeight;
-      const previewHeight = pre.clientHeight;
+      cancelAnimationFrame(frame);
 
-      setExpandedHeight(fullHeight);
+      frame = requestAnimationFrame(() => {
+        const previewHeight = Number.parseFloat(
+          window.getComputedStyle(root).getPropertyValue("--code-preview-height"),
+        );
 
-      if (!isExpanded) {
-        setIsExpandable(fullHeight > previewHeight + 1);
-      }
+        setIsExpandable(pre.scrollHeight > previewHeight + 1);
+      });
     };
 
     measure();
 
     const resizeObserver = new ResizeObserver(measure);
-    resizeObserver.observe(pre);
+    resizeObserver.observe(root);
 
     window.addEventListener("resize", measure);
 
     return () => {
+      cancelAnimationFrame(frame);
       resizeObserver.disconnect();
       window.removeEventListener("resize", measure);
     };
-  }, [code, isExpanded]);
+  }, [code]);
 
   return (
-    <div className={styles.root} data-expanded={isExpanded} data-expandable={isExpandable}>
+    <div ref={rootRef} className={styles.root} data-expanded={isExpanded} data-expandable={isExpandable}>
       <div className={styles.codeFrame}>
-        <pre
-          ref={preRef}
-          className={styles.code}
-          style={isExpanded && expandedHeight ? { maxHeight: `${expandedHeight + 2}px` } : undefined}
-        >
+        <pre ref={preRef} className={styles.code}>
           <code>{code}</code>
         </pre>
 

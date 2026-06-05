@@ -1,5 +1,10 @@
 .root {
+  min-width: 0;
+}
+
+.codeFrame {
   position: relative;
+  min-width: 0;
 }
 
 .code {
@@ -23,24 +28,19 @@
 .fade {
   position: absolute;
   right: var(--border-width);
-  bottom: calc(2.7rem + var(--border-width));
+  bottom: var(--border-width);
   left: var(--border-width);
   height: 5.5rem;
   background: linear-gradient(to bottom, rgba(8, 9, 11, 0), #08090b 78%);
-  opacity: 1;
   pointer-events: none;
-  transition: opacity var(--duration-fast) var(--ease-standard);
 }
 
 .toggle {
-  position: absolute;
-  right: var(--space-4);
-  bottom: var(--space-4);
-  z-index: 1;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   min-height: 2.35rem;
+  margin-top: var(--space-3);
   border: var(--border-width) solid var(--color-accent-border);
   background: rgba(243, 146, 0, 0.14);
   padding: 0 var(--space-4);
@@ -65,19 +65,6 @@
   outline: none;
 }
 
-.root[data-expanded="true"] .fade {
-  opacity: 0;
-}
-
-.root[data-expanded="true"] .toggle {
-  position: static;
-  margin-top: var(--space-3);
-}
-
-.root[data-expandable="true"] .code {
-  padding-bottom: calc(var(--space-5) + 2.75rem);
-}
-
 .root[data-expanded="true"] .code {
   overflow-y: hidden;
 }
@@ -88,17 +75,7 @@
     padding: var(--space-4);
   }
 
-  .root[data-expandable="true"] .code {
-    padding-bottom: calc(var(--space-4) + 2.75rem);
-  }
-
-  .toggle {
-    right: var(--space-3);
-    bottom: var(--space-3);
-  }
-
   .fade {
-    bottom: calc(2.45rem + var(--border-width));
     height: 4.75rem;
   }
 }

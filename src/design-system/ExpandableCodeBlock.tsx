@@ -47,26 +47,27 @@ export function ExpandableCodeBlock({ children }: ExpandableCodeBlockProps) {
 
   return (
     <div className={styles.root} data-expanded={isExpanded} data-expandable={isExpandable}>
-      <pre
-        ref={preRef}
-        className={styles.code}
-        style={isExpanded && expandedHeight ? { maxHeight: `${expandedHeight}px` } : undefined}
-      >
-        <code>{code}</code>
-      </pre>
+      <div className={styles.codeFrame}>
+        <pre
+          ref={preRef}
+          className={styles.code}
+          style={isExpanded && expandedHeight ? { maxHeight: `${expandedHeight + 2}px` } : undefined}
+        >
+          <code>{code}</code>
+        </pre>
+
+        {isExpandable && !isExpanded ? <div className={styles.fade} aria-hidden="true" /> : null}
+      </div>
 
       {isExpandable ? (
-        <>
-          <div className={styles.fade} aria-hidden="true" />
-          <button
-            type="button"
-            className={styles.toggle}
-            aria-expanded={isExpanded}
-            onClick={() => setIsExpanded((current) => !current)}
-          >
-            {isExpanded ? "Згорнути" : "Розгорнути"}
-          </button>
-        </>
+        <button
+          type="button"
+          className={styles.toggle}
+          aria-expanded={isExpanded}
+          onClick={() => setIsExpanded((current) => !current)}
+        >
+          {isExpanded ? "Згорнути" : "Розгорнути"}
+        </button>
       ) : null}
     </div>
   );

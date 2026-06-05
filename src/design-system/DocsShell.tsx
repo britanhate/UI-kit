@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 import { designSystemNav } from "./navigation";
 import { ExpandableCodeBlock } from "./ExpandableCodeBlock";
+import { getSourceCode } from "./source/getSourceCode";
 import styles from "./DocsShell.module.css";
 
 export function DocsShell({
@@ -104,17 +105,65 @@ export function CodeBlock({ children }: Readonly<{ children: string }>) {
   return <ExpandableCodeBlock>{children}</ExpandableCodeBlock>;
 }
 
-export function CodeExample({ tsx, css }: Readonly<{ tsx: string; css: string }>) {
+type SourcePath = string | string[];
+
+type CodeExampleProps = Readonly<{
+  tsxPath: SourcePath;
+  cssPath?: SourcePath;
+}>;
+
+function toPathList(sourcePath?: SourcePath) {
+  if (!sourcePath) return [];
+
+  return Array.isArray(sourcePath) ? sourcePath : [sourcePath];
+}
+
+async function readSourceGroup(sourcePath: SourcePath) {
+  const paths = toPathList(sourcePath);
+  const files = await Promise.all(
+    paths.map(async (sourceFilePath) => ({
+      path: sourceFilePath,
+      code: await getSourceCode(sourceFilePath),
+    })),
+  );
+
+  if (files.length === 1) {
+    return files[0].code;
+  }
+
+  return files
+    .map((file) => `/* ${file.path} */\n${file.code.trimEnd()}`)
+    .join("\n\n");
+}
+
+function getLabel(baseLabel: string, sourcePath: SourcePath) {
+  const paths = toPathList(sourcePath);
+
+  if (paths.length === 1) {
+    return `${baseLabel} · ${paths[0]}`;
+  }
+
+  return `${baseLabel} · ${paths.length} files`;
+}
+
+export async function CodeExample({ tsxPath, cssPath }: CodeExampleProps) {
+  const [tsx, css] = await Promise.all([
+    readSourceGroup(tsxPath),
+    cssPath ? readSourceGroup(cssPath) : Promise.resolve(undefined),
+  ]);
+
   return (
     <div className={styles.codePair}>
       <div>
-        <p className={styles.codeLabel}>TSX / JSX</p>
+        <p className={styles.codeLabel}>{getLabel("TSX / JSX", tsxPath)}</p>
         <CodeBlock>{tsx}</CodeBlock>
       </div>
-      <div>
-        <p className={styles.codeLabel}>CSS module</p>
-        <CodeBlock>{css}</CodeBlock>
-      </div>
+      {css && cssPath ? (
+        <div>
+          <p className={styles.codeLabel}>{getLabel("CSS module", cssPath)}</p>
+          <CodeBlock>{css}</CodeBlock>
+        </div>
+      ) : null}
     </div>
   );
 }

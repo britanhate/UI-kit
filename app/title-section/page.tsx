@@ -1,68 +1,5 @@
-import { TitleSection } from "@/components/features/shared/TitleSection";
 import { CodeExample, DocsPageHeader, DocsSection, DocsShell, Preview, docsStyles } from "@/design-system/DocsShell";
-
-const titleSectionTsx = `type TitleSectionProps = {
-  title: string;
-  subtitle: string;
-  backgroundImage?: string;
-};
-
-export function TitleSection({ title, subtitle, backgroundImage }: TitleSectionProps) {
-  return (
-    <section
-      className={styles.section}
-      style={backgroundImage ? { backgroundImage: \`linear-gradient(rgba(1,1,2,.72), rgba(1,1,2,.72)), url(\${backgroundImage})\` } : undefined}
-    >
-      <div className={styles.inner}>
-        <h2 className={styles.title}>{title}</h2>
-        <p className={styles.subtitle}>{subtitle}</p>
-      </div>
-    </section>
-  );
-}`;
-
-const titleSectionCss = `.section {
-  scroll-margin-top: var(--header-height);
-  padding: clamp(5rem, 8vw, 9rem) var(--container-padding);
-  background-color: var(--color-bg);
-  background-position: center;
-  background-size: cover;
-  border-block: 1px solid var(--color-border);
-}
-
-.inner {
-  width: min(100%, var(--container-lg));
-  margin: 0 auto;
-  text-align: center;
-}
-
-.title {
-  margin: 0;
-  color: var(--color-text);
-  font-family: var(--font-heading);
-  font-size: clamp(2rem, 4vw, 4.4rem);
-  line-height: var(--leading-tight);
-  letter-spacing: var(--tracking-tight-title);
-}
-
-.subtitle {
-  max-width: 760px;
-  margin: var(--space-5) auto 0;
-  color: var(--color-text-muted);
-  font-size: var(--text-lg);
-  line-height: var(--leading-relaxed);
-}
-
-@media (max-width: 640px) {
-  .section {
-    padding-inline: var(--space-4);
-    text-align: left;
-  }
-
-  .inner {
-    text-align: left;
-  }
-}`;
+import { TitleSectionDemo } from "@/design-system/examples/TitleSectionDemo";
 
 export default function TitleSectionPage() {
   return (
@@ -84,16 +21,15 @@ export default function TitleSectionPage() {
 
         <DocsSection title="Приклад у системі">
           <Preview label="Real component" note="TitleSection" bleed>
-            <TitleSection
-              title="Назва тематичного блоку"
-              subtitle="Короткий опис, який пояснює контекст наступної частини сторінки."
-              backgroundImage="/images/sections/main-title-bg.webp"
-            />
+            <TitleSectionDemo />
           </Preview>
         </DocsSection>
 
         <DocsSection title="Як зробити кодом">
-          <CodeExample tsx={titleSectionTsx} css={titleSectionCss} />
+          <CodeExample
+            tsxPath="src/design-system/examples/TitleSectionDemo.tsx"
+            cssPath="src/components/features/shared/TitleSection/TitleSection.module.css"
+          />
         </DocsSection>
       </div>
     </DocsShell>

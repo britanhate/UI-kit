@@ -2,130 +2,6 @@ import { CodeExample, DocsPageHeader, DocsSection, DocsShell, docsStyles, Previe
 
 import { ModalDemo } from "./ModalDemo";
 
-const modalTsx = `"use client";
-
-import { useId, useState } from "react";
-import {
-  Dialog,
-  DialogBody,
-  DialogCloseButton,
-  DialogHeader,
-} from "@/components/ui/Dialog";
-
-export function ExampleModal() {
-  const [isOpen, setIsOpen] = useState(false);
-  const titleId = useId();
-  const descriptionId = useId();
-
-  return (
-    <>
-      <button type="button" onClick={() => setIsOpen(true)}>
-        Відкрити модалку
-      </button>
-
-      {isOpen ? (
-        <Dialog
-          onClose={() => setIsOpen(false)}
-          titleId={titleId}
-          descriptionId={descriptionId}
-          overlayClassName={styles.modalOverlay}
-          panelClassName={styles.modal}
-        >
-          <DialogHeader className={styles.modalHeader}>
-            <div>
-              <p className={styles.modalEyebrow}>Приклад</p>
-              <h2 id={titleId} className={styles.modalTitle}>
-                Назва модального вікна
-              </h2>
-              <p id={descriptionId} className={styles.modalDescription}>
-                Коротке пояснення дії або змісту.
-              </p>
-            </div>
-
-            <DialogCloseButton
-              label="Закрити модальне вікно"
-              onClick={() => setIsOpen(false)}
-            />
-          </DialogHeader>
-
-          <DialogBody className={styles.modalBody}>
-            <div className={styles.modalGrid}>
-              <article className={styles.infoCard}>...</article>
-              <article className={styles.infoCard}>...</article>
-            </div>
-          </DialogBody>
-        </Dialog>
-      ) : null}
-    </>
-  );
-}`;
-
-const modalCss = `.modalOverlay {
-  --dialog-width: 780px;
-  --dialog-overlay-bg: rgba(1, 1, 2, 0.58);
-  --dialog-overlay-filter: blur(10px);
-}
-
-.modal {
-  --dialog-max-height: 860px;
-  --dialog-shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
-}
-
-.modalHeader {
-  align-items: center;
-}
-
-.modalEyebrow {
-  margin: 0 0 var(--space-2);
-  color: rgba(18, 34, 56, 0.64);
-  font-family: var(--font-standart), system-ui, sans-serif;
-  font-size: 0.72rem;
-  font-weight: var(--font-weight-semibold);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
-
-.modalTitle {
-  margin: 0;
-  color: var(--color-ink);
-  font-family: var(--font-heading);
-  font-size: clamp(1.25rem, 1.2vw + 1rem, 1.75rem);
-  font-weight: var(--font-weight-semibold);
-  line-height: 1.15;
-}
-
-.modalDescription {
-  max-width: 620px;
-  margin: var(--space-3) 0 0;
-  color: rgba(18, 34, 56, 0.74);
-  font-size: 0.96rem;
-  line-height: var(--leading-body);
-}
-
-.modalBody {
-  overflow: auto;
-  padding: var(--space-7) var(--space-6) 30px;
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.74), rgba(255, 255, 255, 0.74)),
-    url("/images/contact-modal.webp");
-  background-size: cover;
-  background-position: center;
-  color: var(--color-ink);
-}
-
-.infoCard {
-  padding: 18px;
-  border: var(--border-width) solid var(--color-alpha-soft);
-  background: rgba(255, 255, 255, 0.72);
-  box-shadow: 0 8px 24px rgba(18, 34, 56, 0.08);
-}
-
-/* Real close button animation lives in Dialog.module.css */
-.closeButton:hover,
-.closeButton:focus-visible {
-  transform: scale(1.08) rotate(90deg);
-}`;
-
 export default function ModalsPage() {
   return (
     <DocsShell currentHref="/modals">
@@ -187,7 +63,13 @@ export default function ModalsPage() {
         </DocsSection>
 
         <DocsSection title="Як зробити кодом">
-          <CodeExample tsx={modalTsx} css={modalCss} />
+          <CodeExample
+            tsxPath="app/modals/ModalDemo.tsx"
+            cssPath={[
+              "app/modals/ModalDemo.module.css",
+              "src/components/ui/Dialog/Dialog.module.css",
+            ]}
+          />
         </DocsSection>
       </div>
     </DocsShell>

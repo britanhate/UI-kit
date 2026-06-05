@@ -1,18 +1,6 @@
-.root {
-  --code-preview-height: clamp(17rem, 42vw, 25rem);
-
-  min-width: 0;
-}
-
-.codeFrame {
-  position: relative;
-  min-width: 0;
-}
-
 .code {
-  max-height: var(--code-preview-height);
-  overflow-x: auto;
-  overflow-y: hidden;
+  max-height: 520px;
+  overflow: auto;
   margin: 0;
   border: var(--border-width) solid var(--color-border-soft);
   background: #08090b;
@@ -20,68 +8,15 @@
   color: var(--color-text-muted);
   font-size: 0.88rem;
   line-height: 1.7;
-  transition: max-height var(--duration-medium) var(--ease-standard);
-}
-
-.root[data-expanded="true"] .code {
-  max-height: none;
-  overflow-y: visible;
 }
 
 .code code {
   font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
 }
 
-.fade {
-  position: absolute;
-  right: var(--border-width);
-  bottom: var(--border-width);
-  left: var(--border-width);
-  height: 5.5rem;
-  background: linear-gradient(to bottom, rgba(8, 9, 11, 0), #08090b 78%);
-  pointer-events: none;
-}
-
-.toggle {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 2.35rem;
-  margin-top: var(--space-3);
-  border: var(--border-width) solid var(--color-accent-border);
-  background: rgba(243, 146, 0, 0.14);
-  padding: 0 var(--space-4);
-  color: var(--color-soft-white);
-  font-family: var(--font-heading);
-  font-size: var(--text-xs);
-  font-weight: var(--font-weight-semibold);
-  letter-spacing: var(--tracking-eyebrow);
-  text-transform: uppercase;
-  cursor: pointer;
-  transition:
-    border-color var(--duration-fast) var(--ease-standard),
-    background var(--duration-fast) var(--ease-standard),
-    color var(--duration-fast) var(--ease-standard);
-}
-
-.toggle:hover,
-.toggle:focus-visible {
-  border-color: var(--color-accent);
-  background: rgba(243, 146, 0, 0.22);
-  color: var(--color-soft-white);
-  outline: none;
-}
-
 @media (max-width: 820px) {
-  .root {
-    --code-preview-height: clamp(13.5rem, 58vw, 20rem);
-  }
-
   .code {
+    max-height: 380px;
     padding: var(--space-4);
-  }
-
-  .fade {
-    height: 4.75rem;
   }
 }

@@ -5,7 +5,7 @@ export function TitleSectionDemo() {
     <TitleSection
       title="Назва сторінки або великого розділу"
       subtitle="Короткий опис, який пояснює зміст сторінки. Один-два рядки без зайвої деталізації."
-      backgroundImage="/images/geoportal/hero.webp"
+      backgroundImage="/images/sections/main-title-bg.webp"
     />
   );
 }
